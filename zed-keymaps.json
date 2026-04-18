@@ -145,7 +145,7 @@
     }
   },
   {
-    "context": "VimControl && !menu",
+    "context": "VimControl && !menu && (vim_mode == normal || not_editing)",
     "bindings": {
       "space c a": "editor::ToggleCodeActions"
     }
@@ -157,7 +157,7 @@
     }
   },
   {
-    "context": "Editor",
+    "context": "Editor && (vim_mode == normal || not_editing)",
     "bindings": {
       "space e f": "project_panel::ToggleFocus"
     }
@@ -172,6 +172,174 @@
     "context": "Editor",
     "unbind": {
       "ctrl-h": "editor::Backspace"
+    }
+  },
+  {
+    "context": " vim_mode == visual || vim_mode == operator",
+    "bindings": {
+      "shift-k": "editor::MoveLineUp"
+    }
+  },
+  {
+    "context": "vim_mode == normal || vim_mode == visual || vim_mode == operator",
+    "unbind": {
+      "[ e": "editor::MoveLineUp"
+    }
+  },
+  {
+    "context": "vim_mode == normal || vim_mode == visual || vim_mode == operator",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown"
+    }
+  },
+  {
+    "context": "vim_mode == normal || vim_mode == visual || vim_mode == operator",
+    "unbind": {
+      "] e": "editor::MoveLineDown"
+    }
+  },
+  {
+    "context": "(Workspace || Editor) && (vim_mode == normal || not_editing)",
+    "bindings": {
+      "space f": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "!Editor && !Terminal",
+    "bindings": {
+      "ctrl-n": "pane::ActivateNextItem"
+    }
+  },
+  {
+    "context": "!Editor && !Terminal",
+    "unbind": {
+      "] b": "pane::ActivateNextItem"
+    }
+  },
+  {
+    "context": "!Editor && !Terminal",
+    "bindings": {
+      "ctrl-p": "pane::ActivatePreviousItem"
+    }
+  },
+  {
+    "context": "!Editor && !Terminal",
+    "unbind": {
+      "[ b": "pane::ActivatePreviousItem"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-p": "editor::MoveUp"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-n": "editor::MoveDown"
+    }
+  },
+  {
+    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "bindings": {
+      "ctrl-n": "pane::ActivateNextItem"
+    }
+  },
+  {
+    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "unbind": {
+      "ctrl-w ctrl-g t": "pane::ActivateNextItem"
+    }
+  },
+  {
+    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "bindings": {
+      "ctrl-p": "pane::ActivatePreviousItem"
+    }
+  },
+  {
+    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "unbind": {
+      "ctrl-w ctrl-g shift-t": "pane::ActivatePreviousItem"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "q": "project_panel::Toggle"
+    }
+  },
+  {
+    "context": "(vim_mode == helix_normal || vim_mode == helix_select || (vim_mode == normal || not_editing)) && !menu",
+    "bindings": {
+      "space /": "pane::DeploySearch"
+    }
+  },
+  {
+    "context": "ProjectSearchBar",
+    "bindings": {
+      "cmd-shift-f": "search::FocusSearch"
+    }
+  },
+  {
+    "context": "ProjectSearchBar",
+    "unbind": {
+      "cmd-shift-f": "search::FocusSearch"
+    }
+  },
+  {
+    "context": "Workspace && (vim_mode == normal || not_editing)",
+    "bindings": {
+      "space /": "pane::DeploySearch"
+    }
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "cmd-shift-f": "pane::DeploySearch"
+    }
+  },
+  {
+    "context": "Editor && (vim_mode == normal || not_editing)",
+    "bindings": {
+      "space b": "editor::ToggleBreakpoint"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "f9": "editor::ToggleBreakpoint"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "unbind": {
+      "%": "project_panel::NewFile"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "d": "project_panel::Delete"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "unbind": {
+      "shift-d": "project_panel::Delete"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "unbind": {
+      "d": "project_panel::NewDirectory"
     }
   }
 ]
