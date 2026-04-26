@@ -133,7 +133,7 @@
     }
   },
   {
-    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "context": "(VimControl && !menu) ||  !Terminal",
     "bindings": {
       "ctrl-c": "pane::CloseActiveItem"
     }
@@ -199,9 +199,9 @@
     }
   },
   {
-    "context": "(Workspace || Editor) && (vim_mode == normal || not_editing)",
+    "context": "((Workspace || Editor || ProjectPanel) && (vim_mode == normal || not_editing)) || (!workspace_has_open_files && !Editor && !Terminal)",
     "bindings": {
-      "space f": "file_finder::Toggle"
+      "space f f": "file_finder::Toggle"
     }
   },
   {
@@ -289,7 +289,7 @@
     }
   },
   {
-    "context": "Workspace && (vim_mode == normal || not_editing)",
+    "context": "((Workspace || Editor || ProjectPanel) && (vim_mode == normal || not_editing)) || (!workspace_has_open_files && !Editor && !Terminal)",
     "bindings": {
       "space /": "pane::DeploySearch"
     }
@@ -340,6 +340,36 @@
     "context": "ProjectPanel && not_editing",
     "unbind": {
       "d": "project_panel::NewDirectory"
+    }
+  },
+  {
+    "context": "((Workspace || Editor || ProjectPanel) && (vim_mode == normal || not_editing)) || (!workspace_has_open_files && !Editor && !Terminal)",
+      "bindings": {
+      "space space": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "(vim_mode == helix_normal || vim_mode == helix_select) && !menu",
+    "bindings": {
+      "g a r": "editor::FindAllReferences"
+    }
+  },
+  {
+    "context": "(vim_mode == helix_normal || vim_mode == helix_select) && !menu",
+    "unbind": {
+      "g r": "editor::FindAllReferences"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "g r": "editor::GoToImplementation"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "unbind": {
+      "g r i": "editor::GoToImplementation"
     }
   }
 ]
